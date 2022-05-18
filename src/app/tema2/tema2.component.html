@@ -1,0 +1,50 @@
+<h1>Formulario</h1>
+<div id="f1">
+    <img src="https://th.bing.com/th/id/OIP.JUETwlvRIEPUtjuiQtj8YwHaHa?pid=ImgDet&rs=1" alt="">
+    <p>
+        Nombre:<input type="text"/>
+      </p>
+      <p>
+        CI:<input type="text"/>
+      </p>
+      <p>
+        Telefono:<input type="phone"/>
+      </p>   
+      <p>
+        Correo electronico:<input type="email"/>
+      </p>             
+</div>
+<h2>Pedido</h2>
+<div id="f2">
+      <table border="1" *ngIf="hayRegistros(); else sinarticulos">
+        <tr>
+          <td>Código</td><td>Descripción</td><td>Precio Unitario</td><td>Precio Docena</td><td>Seleccionar</td>
+        </tr>
+        <tr *ngFor="let pro of productos">
+          <td>{{pro.codigo}}</td>
+          <td>{{pro.descripcion}}</td>
+          <td>{{pro.preciou}}</td>
+          <td>{{pro.preciod}}</td>
+          <td><button (click)="seleccionar(pro)">Seleccionar</button></td>        
+        </tr>
+      </table>
+      <ng-template #sinarticulos><p>No hay articulos.</p></ng-template>
+      <div>
+        <p>
+          Código:<input type="number" [(ngModel)]="pro.codigo" />
+        </p>
+        <p>
+          Descripción:<input type="text" [(ngModel)]="pro.descripcion" />
+        </p>
+        <p>
+          Precio:<input type="number" [(ngModel)]="pro.preciou" />
+        </p> 
+        <p>
+            Precio:<input type="number" [(ngModel)]="pro.preciod" />
+          </p>  
+          <p>
+            Cantidad a llevar:<input type="number"/>
+          </p>               
+        <p><button (click)="agregar()">Agregar</button>
+      </div>
+  </div>
